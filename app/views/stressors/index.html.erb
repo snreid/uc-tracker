@@ -1,0 +1,23 @@
+<h1>Listing stressors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stressors.each do |stressor| %>
+      <tr>
+        <td><%= link_to 'Show', stressor %></td>
+        <td><%= link_to 'Edit', edit_stressor_path(stressor) %></td>
+        <td><%= link_to 'Destroy', stressor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stressor', new_stressor_path %>
