@@ -8,7 +8,7 @@ module USDA
 
     API_KEY = { api_key: Rails.application.secrets.usda_api_key }
 
-    def initialize(base_uri = "http://api.nal.usda.gov/ndb")
+    def initialize(base_uri = "http://api.nal.usda.gov/ndb/")
       @base_uri = base_uri
     end
 
@@ -23,6 +23,14 @@ module USDA
       uri = URI(@base_uri + endpoint)
       uri.query = URI.encode_www_form(params)
       uri
+    end
+
+    def json_response(endpoint, params={})
+      response( endpoint, params.merge!({format: "json"}) )
+    end
+    
+    def xml_response(endpoint, params={})
+      response( endpoint, params.merge!({format: "xml"}) )
     end
   end
 end
