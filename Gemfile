@@ -30,6 +30,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
 gem 'pry-rails'
 
 # Use ActiveModel has_secure_password
