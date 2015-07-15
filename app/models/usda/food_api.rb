@@ -1,5 +1,5 @@
 module USDA
-  class FOOD
+  class FoodAPI
 
     attr_accessor :api
 
@@ -19,8 +19,13 @@ module USDA
     end
     
     # http://ndb.nal.usda.gov/ndb/doc/apilist/API-FOOD-REPORT.md
+    # Get a specific item by ndbno
     def reports(params = {})
       JsonObject.new( api.json_response("reports/", params) )
+    end
+
+    def specific(ndbno)
+      reports({ndbno: ndbno})
     end
   end
 end

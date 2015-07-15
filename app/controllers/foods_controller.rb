@@ -7,6 +7,10 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def search
+    @results = food_api.search({q: search_params})
+  end
+
   # GET /foods/1
   # GET /foods/1.json
   def show
@@ -62,6 +66,9 @@ class FoodsController < ApplicationController
   end
 
   private
+    def food_api
+      @food_api ||= USDA::FoodAPI.new
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_food
       @food = Food.find(params[:id])
@@ -70,5 +77,9 @@ class FoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
       params[:food]
+    end
+
+    def search_params
+      params[:q]
     end
 end
