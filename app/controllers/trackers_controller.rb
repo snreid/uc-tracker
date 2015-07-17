@@ -26,13 +26,13 @@ class TrackersController < ApplicationController
     @trackable = find_trackable
     @tracker = @trackable.trackers.build(tracker_params)
     @tracker.save
-    respond_with(@tracker)
+    redirect_to :back
   end
 
   def update
     civilized_date
     @tracker.update(tracker_params)
-    respond_with(@tracker)
+    redirect_to :back
   end
 
   def destroy

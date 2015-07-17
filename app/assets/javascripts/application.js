@@ -18,10 +18,15 @@
 //= require bootstrap-sprockets
 //= require bootstrap/modal
 //= require_tree .
+
+
 $(document).ready(function(){
+  console.log("I'm ready!");
+
   $('#my_foods').dataTable({
     "aoColumns": [
           { "bSortable": true },
+          { "bSortable": false },
           { "bSortable": false },
           { "bSortable": false },
           { "bSortable": false }
@@ -32,27 +37,31 @@ $(document).ready(function(){
 
 
 
+  $('.add-food-form').submit(function() { 
+    capture_submit_to_ajax(this, "Food successfully added!")
+    return false; // prevents normal behaviour
+  });
+  
+  // $('.trackable-modal-form').submit(function() {  
+  //   capture_submit_to_ajax(this, "Thank you for tracking!")
+  //   return false; // prevents normal behaviour
+  // });
 
-  $('.add-food-form').submit(function() {  
-    capture_submit_to_ajax("Food successfully added!")
-    return false; // prevents normal behaviour
-  });
-  $('.trackable-modal-form').submit(function() {  
-    capture_submit_to_ajax("Thank you for tracking!")
-    return false; // prevents normal behaviour
-  });
+
 
 });
 
-function capture_submit_to_ajax(success_message){
-  var valuesToSubmit = $(this).serialize();
+
+function capture_submit_to_ajax(obj, success_message){
+
+  var valuesToSubmit = $(obj).serialize();
   $.ajax({
       type: "POST",
-      url: $(this).attr('action'), //sumbits it to the given url of the form
+      url: $(obj).attr('action'), //sumbits it to the given url of the form
       data: valuesToSubmit,
       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
   }).success(function(json){
-      alert(success_message);
+      // alert(success_message);
   });
 }
 
