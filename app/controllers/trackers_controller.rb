@@ -44,7 +44,7 @@ class TrackersController < ApplicationController
     end
 
     def tracker_params
-      params.require(:tracker).permit()
+      params.require(:tracker).permit(:trackable_id, :trackable_type, :tracked_date, :user_id)
     end
 
     def find_trackable

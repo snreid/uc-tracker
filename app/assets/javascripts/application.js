@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap/modal
 //= require_tree .
 $(document).ready(function(){
   $('#my_foods').dataTable({
