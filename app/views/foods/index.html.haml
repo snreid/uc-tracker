@@ -17,7 +17,7 @@
       %tr
         %td= food.name
         %td 
-          %button{class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "#myModal"} Track
+          %button{class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "##{food.id}_modal"} Track
         %td= link_to 'Show', food
         %td= link_to 'Edit', edit_food_path(food)
         %td= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' }
@@ -25,4 +25,6 @@
 %br
 
 = link_to 'New Food', new_food_path
-= render partial: "shared/trackable_modal"
+
+- @foods.each do |food|
+  = render partial: "shared/trackable_modal", :locals => {object: food}

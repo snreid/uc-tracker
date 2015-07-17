@@ -10,9 +10,10 @@
   <tbody>
     <% @trackers.each do |tracker| %>
       <tr>
-        <td><%= link_to 'Show', tracker %></td>
-        <td><%= link_to 'Edit', edit_tracker_path(tracker) %></td>
-        <td><%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tracker.tracked_date.to_s %></dt>
+        <td><%#= link_to 'Show', tracker %></td>
+        <td><%#= link_to 'Edit', edit_tracker_path(tracker) %></td>
+        <td><%#= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

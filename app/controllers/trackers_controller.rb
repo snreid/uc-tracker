@@ -22,6 +22,7 @@ class TrackersController < ApplicationController
   end
 
   def create
+    civilized_date
     @trackable = find_trackable
     @tracker = @trackable.trackers.build(tracker_params)
     @tracker.save
@@ -29,6 +30,7 @@ class TrackersController < ApplicationController
   end
 
   def update
+    civilized_date
     @tracker.update(tracker_params)
     respond_with(@tracker)
   end
@@ -43,8 +45,13 @@ class TrackersController < ApplicationController
       @tracker = Tracker.find(params[:id])
     end
 
+    def civilized_date
+      date = params[:tracked_date]
+      tracker_params[:tracked_date] = DateTime.civil(date[:year].to_i, date[:month].to_i, date[:day].to_i, date[:hour].to_i, date[:minute].to_i)
+    end
+
     def tracker_params
-      params.require(:tracker).permit(:trackable_id, :trackable_type, :tracked_date, :user_id)
+      params.require(:trackers).permit(:trackable_id, :trackable_type, :tracked_date, :user_id)
     end
 
     def find_trackable
