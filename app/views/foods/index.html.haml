@@ -3,11 +3,13 @@
 
 
 %h2 My Foods
-%table.table.table-responsive.table-striped
+%table.table.table-responsive.table-striped#my_foods
   %thead
     %tr
       %th Name
-      %th{colspan: 3} Actions
+      %th Actions
+      %th
+      %th
 
   %tbody
     - @foods.each do |food|

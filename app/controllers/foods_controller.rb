@@ -8,8 +8,11 @@ class FoodsController < ApplicationController
   end
 
   def search
+    @results = []
     @response = food_api.search(search_params)
-    @results = @response.list.item
+    unless defined? @response.errors
+      @results = @response.list.item
+    end
   end
 
   # GET /foods/1

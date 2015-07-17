@@ -4,7 +4,8 @@ class TrackersController < ApplicationController
   respond_to :html
 
   def index
-    @trackers = Tracker.all
+    @trackable = find_trackable
+    @trackers = @trackable.trackers
     respond_with(@trackers)
   end
 
@@ -21,7 +22,8 @@ class TrackersController < ApplicationController
   end
 
   def create
-    @tracker = Tracker.new(tracker_params)
+    @trackable = find_trackable
+    @tracker = @trackable.trackers.build(tracker_params)
     @tracker.save
     respond_with(@tracker)
   end
@@ -42,6 +44,15 @@ class TrackersController < ApplicationController
     end
 
     def tracker_params
-      params[:tracker]
+      params.require(:tracker).permit()
+    end
+
+    def find_trackable
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
+      nil
     end
 end

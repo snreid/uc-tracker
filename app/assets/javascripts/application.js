@@ -12,7 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+$(document).ready(function(){
+  $('#my_foods').dataTable({
+    "aoColumns": [
+          { "bSortable": true },
+          { "bSortable": false },
+          { "bSortable": false },
+          { "bSortable": false }
+        ]
+  });
+});

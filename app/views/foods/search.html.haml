@@ -10,7 +10,6 @@
       %tr
         %td 
           = result.name
-      %tr
         %td
           = form_for :foods, url: "/foods", html: {class: "add-food-form"} do |f|
             = hidden_field_tag 'food[name]', result.name

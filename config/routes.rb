@@ -1,17 +1,26 @@
 Rails.application.routes.draw do
-  resources :trackers
 
   devise_for :users
-  resources :foods
+  resources :foods do 
+    resources :trackers
+  end
   post 'foods/search', controller: 'foods', as: 'food_search'
 
-  resources :symptoms
+  resources :symptoms do 
+    resources :trackers
+  end
 
-  resources :stressors
+  resources :stressors do 
+    resources :trackers
+  end
 
-  resources :physical_activities
+  resources :physical_activities do 
+    resources :trackers
+  end
 
-  resources :medications
+  resources :medications do 
+    resources :trackers
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
