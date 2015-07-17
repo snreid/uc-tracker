@@ -3,4 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :foods
+  has_many :stressors
+  has_many :symptoms
+  has_many :physical_activities
+  has_many :medications
+  
 end

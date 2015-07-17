@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150715180228) do
   create_table "foods", force: true do |t|
     t.string   "name"
     t.string   "usda_ndbno"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,24 +25,28 @@ ActiveRecord::Schema.define(version: 20150715180228) do
     t.string   "name"
     t.string   "dosage"
     t.string   "frequency"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "physical_activities", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "stressors", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "symptoms", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :trackers
+
   devise_for :users
   resources :foods
   post 'foods/search', controller: 'foods', as: 'food_search'
