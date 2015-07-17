@@ -1,0 +1,3 @@
+= form_tag food_search_path do
+  = text_field_tag 'q', (defined? @response) ? @response.list.q : nil,  placeholder: 'Enter search term...'
+  = submit_tag 'Search'

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :foods
+  post 'foods/search', controller: 'foods', as: 'food_search'
 
   resources :symptoms
 

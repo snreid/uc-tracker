@@ -1,0 +1,5 @@
+%h1 Search Results
+=render partial: 'shared/search_food_form'
+- @results.each do |result|
+  = result.name
+  %br

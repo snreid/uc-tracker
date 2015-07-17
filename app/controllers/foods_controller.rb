@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: [:show, :edit, :update, :destroy]
+  # before_action :set_food, only: [:show, :edit, :update, :destroy]
 
   # GET /foods
   # GET /foods.json
@@ -8,7 +8,8 @@ class FoodsController < ApplicationController
   end
 
   def search
-    @results = food_api.search({q: search_params})
+    @response = food_api.search({q: search_params})
+    @results = @response.list.item
   end
 
   # GET /foods/1
@@ -80,6 +81,6 @@ class FoodsController < ApplicationController
     end
 
     def search_params
-      params[:q]
+      params.require(:q)
     end
 end
