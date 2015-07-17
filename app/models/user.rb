@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   has_many :symptoms
   has_many :physical_activities
   has_many :medications
-  
+  has_many :trackers
+
 end

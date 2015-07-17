@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  # before_action :set_food, only: [:show, :edit, :update, :destroy]
+  before_action :set_food, only: [:show, :edit, :update, :destroy]
 
   # GET /foods
   # GET /foods.json
@@ -8,7 +8,7 @@ class FoodsController < ApplicationController
   end
 
   def search
-    @response = food_api.search({q: search_params})
+    @response = food_api.search(search_params)
     @results = @response.list.item
   end
 
@@ -29,11 +29,11 @@ class FoodsController < ApplicationController
   # POST /foods
   # POST /foods.json
   def create
-    @food = Food.new(food_params)
+    @food = Food.find_or_create_by(food_params)
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to @food, notice: 'Food was successfully created.' }
+        format.html { redirect_to :back, notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new }
@@ -77,10 +77,10 @@ class FoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params[:food]
+      params.require(:food).permit(:name, :usda_ndbno)
     end
 
     def search_params
-      params.require(:q)
+      params.permit(:q)
     end
 end

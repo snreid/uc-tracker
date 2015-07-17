@@ -3,14 +3,16 @@
 
 
 %h2 My Foods
-%table.table-responsive.table-striped
+%table.table.table-responsive.table-striped
   %thead
     %tr
-      <th colspan="3"></th>
+      %th Name
+      %th{colspan: 3} Actions
 
   %tbody
     - @foods.each do |food|
       %tr
+        %td= food.name
         %td= link_to 'Show', food
         %td= link_to 'Edit', edit_food_path(food)
         %td= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' }

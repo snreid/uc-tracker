@@ -1,5 +1,19 @@
 %h1 Search Results
 =render partial: 'shared/search_food_form'
-- @results.each do |result|
-  = result.name
-  %br
+
+%table.table.table-responsive.table-striped
+  %thead
+    %th Name
+    %th Action
+  %tbody
+    - @results.each do |result|
+      %tr
+        %td 
+          = result.name
+      %tr
+        %td
+          = form_for :foods, url: "/foods", html: {class: "add-food-form"} do |f|
+            = hidden_field_tag 'food[name]', result.name
+            = hidden_field_tag 'food[usda_ndbno]', result.ndbno
+            = f.submit "Add to My Foods", class: "btn btn-primary"
+
