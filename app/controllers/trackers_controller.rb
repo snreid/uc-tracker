@@ -25,7 +25,9 @@ class TrackersController < ApplicationController
     civilized_date
     @trackable = find_trackable
     @tracker = @trackable.trackers.build(tracker_params)
-    @tracker.save
+    if @tracker.save
+      flash[:success] = "Thank you for tracking!"
+    end
     redirect_to :back
   end
 
@@ -47,7 +49,7 @@ class TrackersController < ApplicationController
 
     def civilized_date
       date = params[:tracked_date]
-      tracker_params[:tracked_date] = DateTime.civil(date[:year].to_i, date[:month].to_i, date[:day].to_i, date[:hour].to_i, date[:minute].to_i)
+      params[:trackers][:tracked_date] = DateTime.civil(date[:year].to_i, date[:month].to_i, date[:day].to_i, date[:hour].to_i, date[:minute].to_i)
     end
 
     def tracker_params

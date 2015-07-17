@@ -2,7 +2,7 @@
 .modal.fade{id: "#{object.id}_modal"}
   .modal-dialog
     .modal-content
-      = form_for :trackers, url: "#{object_class}/#{object.id}/trackers", html: {class: "trackable-modal-form"} do |f|
+      = form_for :trackers, url: "#{object.id}/trackers", html: {class: "trackable-modal-form"} do |f|
         .modal-header
           %button{class: "close", "data-dismiss" => "modal"}
             %span &times;
