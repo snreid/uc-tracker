@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title UC Tracker
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .col-md-12
+          = navbar do
+            = navbar_header brand: 'UC Tracker', brand_link: '/'
+            = navbar_collapse do
+              = navbar_group class: 'foo', id: 'menu' do
+                = navbar_item "About Us", '/about'
+                = navbar_item '/contact' do
+                  %span.glyphicon.glyphicon-ok
+                  Contact Us!
+                = navbar_dropdown "Stuff" do
+                  = navbar_dropdown_header 'Great stuff!'
+                  = navbar_item "One", '/one'
+                  = navbar_item "Two", '/two'
+                  = navbar_item "Three", '/three'
+                  - if true # check if user is admin, maybe like "if current_user.try(:admin?)"
+                    = navbar_dropdown_divider
+                    = navbar_item "Admin Dashboard", '/admin'
+                    
+              = navbar_group align: 'right' do
+                - if current_user # check if user is logged in, maybe like "if current_user.present?"
+                  =navbar_text current_user.email
+                - else
+                  = navbar_item 'Login', new_user_session_path
+      .row
+        .col-md-12
+          = bootstrap_flash
+    
+      = yield
