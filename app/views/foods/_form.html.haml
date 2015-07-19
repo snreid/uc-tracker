@@ -1,0 +1,43 @@
+= form_for(@food) do |f|
+  - if @food.errors.any? 
+    %div{id:"error_explanation"}
+      %h2= pluralize(@food.errors.count, "error") + "prohibited this food from being saved:"
+      %ul
+      - @food.errors.full_messages.each do |message| 
+        %li= message
+
+  .row
+    .col-md-12
+      .form-group
+        =f.label :name
+        =f.text_field :name, :class => "form-control"
+      %h3 Nutrition Information
+      .form-group
+        =f.label :serving_size
+        =f.text_field :serving_size, :class => "form-control"
+      .form-group
+        =f.label :calories
+        =f.text_field :calories, :class => "form-control"
+      .form-group
+        =f.label :fat
+        =f.text_field :fat, :class => "form-control"
+      .form-group
+        =f.label :carbohydrates
+        =f.text_field :carbohydrates, :class => "form-control"
+      .form-group
+        =f.label :protein
+        =f.text_field :protein, :class => "form-control"
+      .form-group
+        =f.label :fiber
+        =f.text_field :fiber, :class => "form-control"
+      .form-group
+        =f.label :sodium
+        =f.text_field :sodium, :class => "form-control"
+      .form-group
+        =f.label :sugars
+        =f.text_field :sugars, :class => "form-control"
+
+      =f.hidden_field :user_id, value: current_user.id
+
+  .actions
+    = f.submit "Create Food", class: "btn btn-primary"
