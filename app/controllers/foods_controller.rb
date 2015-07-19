@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.all
+    @foods = current_user.foods
   end
 
   def search
@@ -80,7 +80,7 @@ class FoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params.require(:food).permit(:name, :usda_ndbno)
+      params.require(:food).permit(:name, :usda_ndbno, :user_id)
     end
 
     def search_params

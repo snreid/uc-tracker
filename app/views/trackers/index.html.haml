@@ -1,0 +1,19 @@
+%h1 Listing trackers
+
+%table.table.table-responsive.table-striped
+  %thead
+    %tr
+      %th Date
+      %th Name
+      %th Actions
+
+  %tbody
+    - @trackers.each do |tracker| 
+      %tr
+        %td= tracker.tracked_date.to_s 
+        %td= tracker.trackable.name# link_to 'Show', tracker
+        /%td=# link_to 'Edit', edit_tracker_path(tracker)
+        %td= link_to 'Destroy', send(tracker.trackable_type.downcase+"_tracker_path", {id: tracker.id}), method: :delete, data: { confirm: 'Are you sure?' } 
+
+%br
+

@@ -14,5 +14,6 @@
           = form_for :foods, url: "/foods", html: {class: "add-food-form"} do |f|
             = hidden_field_tag 'food[name]', result.name
             = hidden_field_tag 'food[usda_ndbno]', result.ndbno
+            = hidden_field_tag 'food[user_id]', current_user.id
             = f.submit "Add to My Foods", class: "btn btn-primary"
 

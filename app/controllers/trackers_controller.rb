@@ -39,7 +39,7 @@ class TrackersController < ApplicationController
 
   def destroy
     @tracker.destroy
-    respond_with(@tracker)
+    redirect_to :back
   end
 
   private

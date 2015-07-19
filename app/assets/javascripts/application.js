@@ -21,7 +21,6 @@
 
 
 $(document).ready(function(){
-  console.log("I'm ready!");
 
   $('#my_foods').dataTable({
     "aoColumns": [
@@ -61,7 +60,7 @@ function capture_submit_to_ajax(obj, success_message){
       data: valuesToSubmit,
       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
   }).success(function(json){
-      // alert(success_message);
+      alert(success_message);
   });
 }
 

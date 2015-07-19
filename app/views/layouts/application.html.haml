@@ -29,6 +29,7 @@
               = navbar_group align: 'right' do
                 - if current_user # check if user is logged in, maybe like "if current_user.present?"
                   =navbar_text current_user.email
+                  / =navbar_item 'Logout', link_to(destroy_user_session_path, method: :delete)
                 - else
                   = navbar_item 'Login', new_user_session_path
       .row
