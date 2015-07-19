@@ -1,17 +1,46 @@
 module FoodsHelper
   include Haml::Helpers
-  
+
   def nutrition_facts(food)
     capture_haml do
-      haml_tag "div.row" do
-        haml_tag "div.col-md-12" do
-          haml_concat "Interesting nutrition facts"
+      if food.usda_ndbno.present?
+        nutritions = food.get_usda_nutrition_facts.report.food.nutrients
+        haml_tag  "ul" do
+          nutritions.each do |nutr|
+            haml_tag "li" do
+              haml_tag :strong, nutr.name + ": "
+              haml_concat( nutr.value + nutr.unit)
+            end
+          end  
+        end
+      else
+        haml_tag "ul" do
+          haml_tag "li" do
+            haml_concat("Serving Size: " + food.serving_size.to_s) 
+          end
+          haml_tag "li" do
+            haml_concat("Calories: " + food.calories.to_s) 
+          end
+          haml_tag "li" do
+           haml_concat("Fat: " + food.fat.to_s)
+          end
+          haml_tag "li" do
+            haml_concat("Carbohydrates: " + food.carbohydrates.to_s) 
+          end
+          haml_tag "li" do
+           haml_concat("Protein: "+ food.protein.to_s)
+          end
+          haml_tag "li" do 
+            haml_concat("Fiber: " + food.fiber.to_s) 
+          end
+          haml_tag "li" do 
+            haml_concat("Sodium: " + food.sodium.to_s) 
+          end
+          haml_tag "li" do 
+            haml_concat("Sugars: " + food.sugars.to_s) 
+          end
         end
       end
     end
-    # if food.ndbno
-    #   nutritions = food.get_usda_nutrition_facts
-    # else
-    # end
   end
 end

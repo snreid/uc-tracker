@@ -80,7 +80,7 @@ class FoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params.require(:food).permit(:name, :usda_ndbno, :user_id, :calories, :fat, :carbohydrates, :protein, :fiber, :sodium,:sugars)
+      params.require(:food).permit(:name, :usda_ndbno, :user_id, :serving_size, :calories, :fat, :carbohydrates, :protein, :fiber, :sodium,:sugars)
     end
 
     def search_params
