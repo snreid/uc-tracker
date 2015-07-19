@@ -1,0 +1,13 @@
+%p{id: "notice"}= notice
+.row
+  .col-md-12
+    %h2=@food.name
+    %h3 Nutrition Facts
+    =nutrition_facts(@food)
+
+.row &nbsp;
+.row
+  .col-md-12
+    = link_to 'Edit', edit_food_path(@food), class: "btn btn-default"
+    &nbsp;
+    = link_to 'Back', foods_path, class: "btn btn-default" 

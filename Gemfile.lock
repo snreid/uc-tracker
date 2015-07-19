@@ -31,6 +31,7 @@ GEM
     autoprefixer-rails (5.2.1)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     bootstrap-navbar (2.2.1)
       gem_config (~> 0.3)
@@ -151,6 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootstrap-navbar (>= 2.1.4)
   bootstrap-sass (~> 3.3.5)
   coffee-rails (~> 4.0.0)

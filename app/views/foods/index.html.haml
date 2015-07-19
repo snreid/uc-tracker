@@ -24,7 +24,7 @@
 
 %br
 
-= link_to 'New Food', new_food_path
+= link_to 'New Food', new_food_path, class: "btn btn-primary"
 
 - @foods.each do |food|
   = render partial: "shared/trackable_modal", :locals => {object: food}
