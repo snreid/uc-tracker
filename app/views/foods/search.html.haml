@@ -9,7 +9,7 @@
     - if @results.empty?
       - @response.errors.error.each do |m|
         %tr
-          %td
+          %th
             = m.message
     - @results.each do |result|
       %tr

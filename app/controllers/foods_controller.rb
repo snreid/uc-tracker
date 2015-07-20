@@ -15,6 +15,8 @@ class FoodsController < ApplicationController
     unless @response.info.has_key? "errors"
       @results = @response.list.item
     end
+  rescue
+    @response = JsonObject.new({"errors" => {"error" => [{"message" => "The USDA API cannot be reached at this time. You may not be connected to the internet."}]}})
   end
 
   # GET /foods/1
