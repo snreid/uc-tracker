@@ -6,6 +6,11 @@
     %th Name
     %th Action
   %tbody
+    - if @results.empty?
+      - @response.errors.error.each do |m|
+        %tr
+          %td
+            = m.message
     - @results.each do |result|
       %tr
         %td 

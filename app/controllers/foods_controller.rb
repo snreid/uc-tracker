@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+
   before_action :set_food, only: [:show, :edit, :update, :destroy]
 
   # GET /foods
@@ -10,7 +11,8 @@ class FoodsController < ApplicationController
   def search
     @results = []
     @response = food_api.search(search_params)
-    unless defined? @response.errors
+
+    unless @response.info.has_key? "errors"
       @results = @response.list.item
     end
   end
