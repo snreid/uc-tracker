@@ -16,4 +16,5 @@
         %td= link_to 'Destroy', send(tracker.trackable_type.downcase+"_tracker_path", {id: tracker.id}), method: :delete, data: { confirm: 'Are you sure?' } 
 
 %br
+%div{id: "chart-container", style: "min-width: 310px; height: 400px; margin: 0 auto"}
 
