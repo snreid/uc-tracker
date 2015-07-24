@@ -32,8 +32,10 @@ gem 'devise'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
-gem 'pry-rails'
-gem "awesome_print"
+gem "highcharts-rails", "~> 3.0.0"
+
+gem 'pry-rails',        group: :development
+gem "awesome_print",        group: :development
 
 
 gem 'bootstrap-navbar', '>= 2.1.4'
