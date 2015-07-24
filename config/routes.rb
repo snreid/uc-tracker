@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :risk_assessments
+
   devise_for :users
   resources :foods do 
     resources :trackers
