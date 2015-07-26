@@ -7,6 +7,7 @@
   %thead
     %tr
       %th Name
+      %th Risk Level
       %th Track
       %th Actions
       %th 
@@ -16,6 +17,12 @@
     - @foods.each do |food|
       %tr
         %td= food.name
+        %td
+          =form_for :risk_assessments, url: food_risk_assessments_path(food), html: {class: "set_food_risk_form"} do |f|
+            = select_tag "risk_assessment[level]", options_for_select((1..10), food.risk), {class: "set_food_risk"}
+            = hidden_field_tag "risk_assessment[risk_assessable_id]", food.id
+            = hidden_field_tag "risk_assessment[risk_assessable_type]", food.class.to_s
+            = hidden_field_tag "risk_assessment[user_id]", current_user.id
         %td 
           %button{class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "##{food.id}_modal"} Track
         %td= link_to 'Show', food

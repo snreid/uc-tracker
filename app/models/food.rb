@@ -8,4 +8,8 @@ class Food < ActiveRecord::Base
     api = USDA::FoodAPI.new
     api.reports({ndbno: self.usda_ndbno})
   end  
+
+  def risk
+    risk_assessments.current.try(:level) || 1
+  end
 end

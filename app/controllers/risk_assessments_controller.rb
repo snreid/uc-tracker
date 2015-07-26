@@ -22,8 +22,12 @@ class RiskAssessmentsController < ApplicationController
 
   def create
     @risk_assessment = RiskAssessment.new(risk_assessment_params)
-    @risk_assessment.save
-    respond_with(@risk_assessment)
+    
+    respond_to do |format|
+      if @risk_assessment.save
+        format.html { redirect_to :back, notice: 'Risk was successfully created.' }
+      end
+    end
   end
 
   def update
@@ -42,6 +46,6 @@ class RiskAssessmentsController < ApplicationController
     end
 
     def risk_assessment_params
-      params[:risk_assessment]
+      params.require(:risk_assessment).permit(:user_id, :level, :risk_assessable_id, :risk_assessable_type)
     end
 end

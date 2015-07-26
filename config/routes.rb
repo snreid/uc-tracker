@@ -1,27 +1,32 @@
 Rails.application.routes.draw do
 
-  resources :risk_assessments
+  
 
   devise_for :users
   resources :foods do 
     resources :trackers
+    resources :risk_assessments
   end
   post 'foods/search', controller: 'foods', as: 'food_search'
 
   resources :symptoms do 
     resources :trackers
+    resources :risk_assessments
   end
 
   resources :stressors do 
     resources :trackers
+    resources :risk_assessments
   end
 
   resources :physical_activities do 
     resources :trackers
+    resources :risk_assessments
   end
 
   resources :medications do 
     resources :trackers
+    resources :risk_assessments
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
